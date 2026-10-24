@@ -2,825 +2,846 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>الليلة الذهبية — دعوة زفاف</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>دعوة زفاف</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#0E0B07;
-  --bg-2:#15110B;
-  --gold:#D2AE5C;
-  --gold-l:#EED79C;
-  --gold-ll:#FFF1C9;
-  --gold-d:#9A7628;
-  --rose:#B2323D;
-  --text:#F3E9D2;
-  --muted:#B9A988;
-  --ar:'Amiri',serif;
-  --title:'Aref Ruqaa','Amiri',serif;
-  --num:'Cormorant Garamond',Georgia,serif;
-  --grad-gold:linear-gradient(135deg,#B8913E 0%,#E8CF8E 40%,#FFF1C9 55%,#C9A24B 100%);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  background:var(--bg);color:var(--text);
-  font-family:var(--ar);font-size:1.1rem;line-height:1.8;
-  overflow-x:hidden;text-align:center;
-}
-body.locked{overflow:hidden}
-a{text-decoration:none;color:inherit}
-:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.gold-text{
-  background:var(--grad-gold);
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-.num{font-family:var(--num)}
-.rev{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
-.rev.in{opacity:1;transform:none}
-section{position:relative}
-.wrap{max-width:640px;margin:0 auto;padding:0 1.4rem}
-
-/* ============================================================
-   INTRO — dark cinematic doors
-   ============================================================ */
-.intro{
-  --dt:23svh;
-  --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='640'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.35 0.006' numOctaves='3' seed='7'/><feColorMatrix values='0 0 0 0 .62  0 0 0 0 .42  0 0 0 0 .24  1.5 0 0 0 -.62'/></filter><rect width='100%25' height='100%25' filter='url(%23g)'/></svg>");
-  position:fixed;inset:0;z-index:140;
-  background:var(--bg);
-  overflow:hidden;cursor:pointer;
-  transition:opacity 1.1s ease 1.6s;
-}
-.intro-hall{
-  position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse at 50% 45%, rgba(210,174,92,.28), transparent 55%),
-    radial-gradient(ellipse at 50% 100%, rgba(178,50,61,.18), transparent 60%),
-    linear-gradient(180deg,#0E0B07 0%,#15110B 55%,#0A0806 100%);
-}
-.intro-hall::before{
-  content:"";position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 30% 50% at 50% 55%, rgba(255,214,140,.18), transparent 70%),
-    radial-gradient(ellipse 12% 24% at 50% 60%, rgba(255,240,200,.14), transparent 70%);
-  animation:candleFlicker 3.4s ease-in-out infinite;
-}
-@keyframes candleFlicker{
-  0%,100%{opacity:1;transform:scale(1)}
-  30%{opacity:.78;transform:scale(1.01)}
-  60%{opacity:.92;transform:scale(.99)}
-  85%{opacity:.85;transform:scale(1.005)}
+:root {
+  --bg: #0E0B07;
+  --bg2: #15110B;
+  --g1: #D2AE5C;
+  --g2: #EED79C;
+  --txt: #F3E9D2;
+  --mut: #B9A988;
+  --line: rgba(210, 174, 92, .3);
+  --glow: rgba(210, 174, 92, .55);
+  --gold: #D2AE5C;
+  --gold-l: #EED79C;
+  --gold-ll: #FFF1C9;
+  --gold-d: #9A7628;
+  --rose: #B2323D;
+  --text: #F3E9D2;
+  --muted: #B9A988;
+  --title: "Aref Ruqaa", "Amiri", serif;
+  --num: Georgia, serif;
+  --head: "Aref Ruqaa", "Amiri", serif;
+  --body: "Amiri", serif;
+  --grad: linear-gradient(135deg, #B8913E 0%, #E8CF8E 40%, #FFF1C9 55%, #C9A24B 100%);
 }
 
-.intro-doors{
-  position:absolute;top:var(--dt);bottom:0;left:50%;
-  width:min(100vw,calc((100svh - var(--dt)) * .62));
-  translate:-50% 0;
-  perspective:1800px;
-  border-radius:38% 38% 0 0 / 12% 12% 0 0;
-  overflow:hidden;background:#050302;
-}
-/* warm light from the hall behind the doors */
-.intro-doors::before{
-  content:"";position:absolute;inset:0;z-index:0;
-  background:radial-gradient(ellipse at 50% 62%,#FFE9B0 0%,#E0B15A 22%,#7A4A14 55%,#1A0F05 100%);
-  opacity:.55;transition:opacity 2.2s ease;
-}
-.intro.open .intro-doors::before{opacity:1}
-/* stone/gilded door frame (static, does not rotate) */
-.intro-frame{
-  position:absolute;top:var(--dt);bottom:0;left:50%;
-  width:min(100vw,calc((100svh - var(--dt)) * .62));
-  translate:-50% 0;z-index:4;pointer-events:none;
-  border-radius:38% 38% 0 0 / 12% 12% 0 0;
-  box-shadow:
-    inset 0 0 0 4px rgba(8,5,2,.95),
-    inset 0 0 0 5px rgba(210,174,92,.55),
-    inset 0 24px 40px rgba(0,0,0,.55),
-    0 0 0 7px #2b2013,
-    0 0 0 8px rgba(210,174,92,.6),
-    0 0 0 15px #15100a,
-    0 0 0 16px rgba(210,174,92,.22),
-    0 0 90px 24px rgba(0,0,0,.85);
-}
-.door{
-  position:absolute;top:0;bottom:0;width:50%;z-index:1;
-  background:var(--grain),var(--face);
-  box-shadow:
-    inset 0 2px 0 rgba(255,200,130,.1),
-    inset 0 0 0 2px rgba(0,0,0,.6),
-    inset 0 0 50px rgba(0,0,0,.6),
-    0 0 40px rgba(0,0,0,.8);
-  transition:transform 2.2s cubic-bezier(.7,0,.2,1),filter 2.2s ease;
-  backface-visibility:hidden;
-}
-.door.l{
-  left:0;transform-origin:left center;
-  --face:linear-gradient(90deg,#1A0F08 0%,#30200F 70%,#3F2A15 100%);
-  border-right:2px solid #090502;
-}
-.door.r{
-  right:0;transform-origin:right center;
-  --face:linear-gradient(270deg,#1A0F08 0%,#30200F 70%,#3F2A15 100%);
-  border-left:2px solid #090502;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* raised wooden panels (mitered bevel) */
-.pnl{
-  position:absolute;left:13%;right:13%;
-  border:clamp(7px,1.6vw,12px) solid;
-  border-color:#5C3F23 #1A0F07 #120A05 #47311B;
-  border-radius:3px;
-  background:var(--grain),linear-gradient(135deg,#2A190D,#1B1009);
-  box-shadow:
-    0 0 0 2px #0B0603,
-    0 0 0 3px rgba(255,200,130,.07),
-    0 6px 14px rgba(0,0,0,.6),
-    inset 0 0 22px rgba(0,0,0,.75),
-    inset 2px 2px 3px rgba(0,0,0,.6);
-}
-.p1{top:8%;height:33%}
-.p2{top:44%;height:31%}
-.p3{top:78%;height:16%}
-/* gold inlay carved into the top panel */
-.p1::after{
-  content:"";position:absolute;inset:9%;
-  border:1px solid rgba(210,174,92,.5);
-  border-radius:2px;
-  background:
-    repeating-linear-gradient(45deg,rgba(210,174,92,.2) 0 1px,transparent 1px 16px),
-    repeating-linear-gradient(-45deg,rgba(210,174,92,.2) 0 1px,transparent 1px 16px);
-  box-shadow:inset 0 0 0 4px rgba(0,0,0,.35),0 0 10px rgba(210,174,92,.15);
+html {
+  scroll-behavior: smooth;
 }
 
-/* brass hinges */
-.hinge{
-  position:absolute;
-  width:clamp(9px,2.4vw,14px);height:clamp(36px,7svh,56px);
-  border-radius:2px;
-  background:
-    radial-gradient(circle at 50% 18%,#2A1D08 0 1.6px,transparent 2px),
-    radial-gradient(circle at 50% 82%,#2A1D08 0 1.6px,transparent 2px),
-    linear-gradient(90deg,#6B4F17,#E8CF8E 40%,#FFF1C9 55%,#8A6A22);
-  box-shadow:0 2px 5px rgba(0,0,0,.7),inset 0 0 0 1px rgba(0,0,0,.35);
-}
-.door.l .hinge{left:2%}
-.door.r .hinge{right:2%}
-.h1{top:10%}.h2{top:48%}.h3{top:86%}
-
-/* long brass pull handle */
-.pull{
-  position:absolute;top:38%;
-  width:clamp(8px,2vw,12px);height:clamp(90px,19svh,160px);
-  border-radius:8px;
-  background:linear-gradient(90deg,#6B4F17,#EED79C 35%,#FFF1C9 50%,#B8913E 70%,#6B4F17);
-  box-shadow:3px 6px 10px rgba(0,0,0,.7),0 0 10px rgba(255,214,140,.25);
-}
-.pull::before,.pull::after{
-  content:"";position:absolute;left:-4px;right:-4px;height:6px;border-radius:3px;
-  background:linear-gradient(90deg,#6B4F17,#EED79C 50%,#6B4F17);
-  box-shadow:0 2px 4px rgba(0,0,0,.6);
-}
-.pull::before{top:10%}
-.pull::after{bottom:10%}
-.door.l .pull{right:5%}
-.door.r .pull{left:5%}
-
-.intro-seam{
-  position:absolute;left:50%;top:var(--dt);bottom:0;width:80px;
-  translate:-50% 0;pointer-events:none;z-index:3;
-  background:radial-gradient(ellipse at center,
-    rgba(255,220,150,.9) 0%,
-    rgba(255,220,150,.35) 25%,
-    transparent 65%);
-  animation:seamPulse 3.2s ease-in-out infinite;
-}
-.intro-seam::before{
-  content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;translate:-50% 0;
-  background:linear-gradient(180deg,transparent,#FFF1C9 20%,#FFF1C9 80%,transparent);
-  filter:blur(1px);
-}
-@keyframes seamPulse{0%,100%{opacity:.65}50%{opacity:1}}
-.intro-hall::after{ /* warm floor glow + vignette */
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 60% 18% at 50% 100%,rgba(255,200,120,.22),transparent 70%),
-    radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.65) 100%);
-}
-.intro.open .door{filter:brightness(1.25)}
-
-.intro-top{
-  position:absolute;top:0;left:0;right:0;z-index:5;
-  padding:max(1.8rem,4svh) 1.5rem 0;
-  opacity:0;transform:translateY(-14px);
-  animation:introTop .9s ease .3s forwards;
-}
-@keyframes introTop{to{opacity:1;transform:translateY(0)}}
-.intro-top .eyebrow{
-  font-size:.9rem;letter-spacing:.32em;text-transform:uppercase;
-  color:var(--gold-l);
-}
-.intro-top .names{
-  font-family:var(--title);
-  font-size:clamp(2.6rem,10vw,4rem);
-  line-height:1.2;margin-top:.8rem;
-  text-shadow:0 2px 20px rgba(0,0,0,.85);
-}
-.intro-top .names .amp{
-  display:inline-block;font-size:.55em;color:var(--gold);
-  vertical-align:middle;margin:0 .2em;
-}
-.intro-top .date{
-  font-size:.85rem;letter-spacing:.28em;text-transform:uppercase;
-  color:var(--gold-l);margin-top:.7rem;opacity:.9;
+body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: var(--body);
+  font-size: 1.1rem;
+  line-height: 1.9;
+  text-align: center;
+  overflow-x: hidden;
 }
 
-.intro-bottom{
-  position:absolute;bottom:0;left:0;right:0;z-index:5;
-  padding:0 1.5rem max(4rem,9svh);
-  display:flex;flex-direction:column;align-items:center;gap:1rem;
-  opacity:0;transform:translateY(14px);
-  animation:introBottom .9s ease .7s forwards;
-}
-@keyframes introBottom{to{opacity:1;transform:translateY(0)}}
-.btn-open{
-  position:relative;overflow:hidden;
-  border:0;cursor:pointer;font:inherit;
-  color:#1A1408;
-  padding:.85rem 2.4rem;border-radius:99px;
-  font-size:1rem;font-weight:600;
-  background:linear-gradient(135deg,#EED79C,#9A7628);
-  box-shadow:0 12px 32px -8px rgba(154,118,40,.7);
-  transition:transform .3s;
-}
-.btn-open:hover{transform:scale(1.03)}
-.btn-open::before{
-  content:"";position:absolute;inset-block:0;left:-30%;width:30%;
-  background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);
-  animation:btnShine 3s ease-in-out infinite;
-}
-@keyframes btnShine{
-  0%,60%{transform:translateX(-100%)}
-  100%{transform:translateX(500%)}
-}
-.intro-note{
-  display:flex;align-items:center;gap:.5rem;
-  font-size:.8rem;color:var(--gold-l);opacity:.85;
-}
-.intro.open .door.l{transform:rotateY(-100deg)}
-.intro.open .door.r{transform:rotateY(100deg)}
-.intro.open .intro-seam{opacity:0}
-/* camera moves forward through the doors */
-.intro-doors,.intro-frame{
-  transform-origin:50% 62%;
-  transition:transform 2.8s cubic-bezier(.55,0,.85,.45);
-}
-.intro.open .intro-doors,
-.intro.open .intro-frame{transform:scale(3.4)}
-.intro.open .intro-top,
-.intro.open .intro-bottom{opacity:0;transition:opacity .5s}
-.intro.open{opacity:0;pointer-events:none}
-
-/* ============================================================
-   HERO — Split Layout (Text Right, Video Left)
-   ============================================================ */
-.hero {
-  position: relative;
-  min-height: 100svh;
-  display: flex;
-  background: #000;
+body.locked {
   overflow: hidden;
 }
 
-/* ---- NEW: Falling Star Animation ---- */
-.hero-stars {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-.star {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: var(--gold-ll);
-  /* Four-pointed star shape */
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-  animation: fall linear infinite;
+:focus-visible {
+  outline: 2px solid var(--g1);
+  outline-offset: 3px;
+}
+
+.gold-text,
+.shine {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rev {
   opacity: 0;
-  box-shadow: 0 0 10px 2px rgba(255, 241, 201, 0.6);
+  transform: translateY(24px);
+  transition: opacity .9s ease, transform .9s ease;
 }
 
-/* Randomizing sizes, positions, and speeds */
-.star:nth-child(1)  { left: 10%; animation-duration: 6s; animation-delay: 0s; transform: scale(0.8); }
-.star:nth-child(2)  { left: 25%; animation-duration: 8s; animation-delay: 2s; transform: scale(1.2); }
-.star:nth-child(3)  { left: 40%; animation-duration: 5s; animation-delay: 4s; transform: scale(0.6); }
-.star:nth-child(4)  { left: 55%; animation-duration: 9s; animation-delay: 1s; transform: scale(1); }
-.star:nth-child(5)  { left: 70%; animation-duration: 7s; animation-delay: 3s; transform: scale(0.9); }
-.star:nth-child(6)  { left: 85%; animation-duration: 6.5s; animation-delay: 5s; transform: scale(1.1); }
-.star:nth-child(7)  { left: 15%; animation-duration: 10s; animation-delay: 2.5s; transform: scale(0.7); }
-.star:nth-child(8)  { left: 60%; animation-duration: 7.5s; animation-delay: 0.5s; transform: scale(1.3); }
-.star:nth-child(9)  { left: 80%; animation-duration: 5.5s; animation-delay: 3.5s; transform: scale(0.8); }
-.star:nth-child(10) { left: 30%; animation-duration: 8.5s; animation-delay: 6s; transform: scale(1); }
-.star:nth-child(11) { left: 50%; animation-duration: 6s; animation-delay: 1.5s; transform: scale(0.5); }
-.star:nth-child(12) { left: 90%; animation-duration: 9s; animation-delay: 4.5s; transform: scale(1.1); }
-
-@keyframes fall {
-  0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-}
-/* ---------------------------------------- */
-
-/* TEXT SIDE (Right) */
-.hero-text {
-  position: relative;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-  padding: 4rem 6%;
-  background: linear-gradient(to right, #000 60%, rgba(0,0,0,0.8) 100%);
+.rev.in {
+  opacity: 1;
+  transform: none;
 }
 
-.hero-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 500px;
-  text-align: center;
+.wrap {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0 1.4rem;
 }
 
-.hero-verse {
-  font-size: 1.15rem;
-  line-height: 2.2;
-  color: var(--gold-ll);
-  text-shadow: 0 2px 10px rgba(0,0,0,.8);
-  margin-bottom: 3rem;
-  font-weight: 700;
-}
-
-.hero-fams {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  margin-bottom: 3rem;
-  width: 100%;
-}
-
-.hero-fam {
-  text-align: center;
-  flex: 1;
-}
-
-.hero-fam small {
+.vid {
   display: block;
-  color: var(--gold-l);
-  font-size: .95rem;
-  margin-bottom: .2rem;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 540/960;
+  background: #000 center/100% auto no-repeat;
 }
 
-.hero-fam p {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #fff;
-  text-shadow: 0 2px 8px rgba(0,0,0,1);
-}
-
-.hero-divider {
-  width: 1px;
-  height: 50px;
-  background: rgba(210,174,92,.4);
-}
-
-.hero-invite {
-  font-size: 1.5rem;
-  color: var(--gold-l);
-  margin-bottom: 1rem;
-}
-
-.hero-names {
-  font-family: var(--title);
-  font-size: clamp(3.5rem, 6vw, 5.5rem);
-  line-height: 1.2;
-  margin-bottom: 2rem;
-  filter: drop-shadow(0 4px 20px rgba(0,0,0,1));
-}
-
-.hero-names .amp {
-  display: inline-block;
-  font-size: .6em;
-  color: var(--gold);
-  vertical-align: middle;
-  margin: 0 .2em;
-}
-
-.hero-date {
-  font-size: 1.2rem;
-  color: var(--gold-l);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.hero-date .num {
-  font-size: 2.8rem;
-  font-weight: 600;
-  color: #fff;
-}
-
-.hero-date .bar {
-  width: 1px; height: 2.5rem;
-  background: rgba(210,174,92,.7);
-}
-
-.hero-date .wd {
-  color: var(--gold-ll);
-}
-
-/* MEDIA SIDE (Left) — PC: video takes 30% of the page width */
-.hero-media {
-  position: relative;
-  flex: 0 0 30%;
-  width: 30%;
+/* ===== BACKGROUND VIDEO ===== */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
   background: #000;
+  container-type: size;
   overflow: hidden;
 }
 
-.hero-video {
+.bg .vid {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  left: 50%;
+  top: 50%;
+  width: 100cqh;
+  height: 100cqw;
+  aspect-ratio: auto;
   object-fit: cover;
-  /* Ensures it covers the whole left side without black gaps */
-  object-position: center bottom; 
+  transform: translate(-50%, -50%) rotate(-90deg);
 }
 
-/* Fades the video smoothly into the black text side */
-.hero-media::after {
+.bg::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to left, #000 0%, transparent 30%);
-  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(14, 11, 7, .1), rgba(14, 11, 7, .65) 90%),
+    linear-gradient(180deg, rgba(14, 11, 7, .3), rgba(14, 11, 7, .45));
+}
+
+main,
+footer {
+  position: relative;
   z-index: 1;
 }
 
-/* ============================================================
-   MOBILE LAYOUT
-   ============================================================ */
-@media (max-width: 900px) {
-  .hero {
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .hero-media {
-    position: absolute;
-    inset: 0;
-    flex: none;
-    width: auto;
-    z-index: 0;
-  }
-
-  .hero-media::after {
-    background: radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.85) 100%);
-  }
-
-  .hero-text {
-    background: transparent;
-    min-height: 100svh;
-    padding: 6rem 1.5rem 4rem;
-    justify-content: center;
-  }
-
-  .hero-content {
-    justify-content: space-between;
-    height: 100%;
-    gap: 2rem;
-  }
-
-  .hero-verse {
-    font-size: 1.1rem;
-    line-height: 1.9;
-    margin-bottom: 0;
-    order: -1;
-  }
-
-  .hero-fams {
-    margin-bottom: 0;
-    gap: 1rem;
-  }
-
-  .hero-fam small { font-size: 0.9rem; }
-  .hero-fam p { font-size: 1.3rem; }
-  .hero-divider { height: 40px; }
-
-  .hero-names { font-size: 3.5rem; }
-  .hero-date .num { font-size: 2.2rem; }
-  .hero-date .bar { height: 1.5rem; }
+/* ===== HERO ===== */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100svh;
+  justify-content: center;
+  padding: 4rem 0;
 }
 
-/* ============================================================
-   COUNTDOWN + CLOCK
-   ============================================================ */
-.cd{
-  position:relative;padding:6rem 1.5rem;overflow:hidden;
-  background:var(--bg-2);
+.h-text {
+  width: 100%;
+  max-width: 600px;
+  padding: 0 1.4rem;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
 }
-.cd::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
+
+.verse {
+  font-size: 1.05rem;
+  line-height: 2.1;
+  color: var(--g2);
+}
+
+.fams {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.fams div {
+  flex: 1;
+}
+
+.fams small {
+  display: block;
+  color: var(--mut);
+  font-size: .9rem;
+}
+
+.fams p {
+  font-family: var(--head);
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+.fams hr {
+  width: 1px;
+  height: 44px;
+  border: 0;
+  background: var(--g1);
+}
+
+.invite {
+  font-size: 1.2rem;
+  color: var(--g2);
+}
+
+.h-names {
+  font-family: var(--head);
+  font-size: clamp(3.2rem, 10vw, 5.4rem);
+  line-height: 1.25;
+}
+
+.amp,
+.i-names .amp {
+  font-size: .5em;
+  margin: 0 .25em;
+  color: var(--g1);
+  font-family: Georgia, serif;
+}
+
+.h-date {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  font-size: 1.15rem;
+  color: var(--g2);
+}
+
+.h-date .n {
+  font-size: 2.4rem;
+  color: #fff;
+  line-height: 1;
+}
+
+.h-date .bar {
+  width: 1px;
+  height: 2rem;
+  background: var(--g1);
+}
+
+/* ===== SECTIONS ===== */
+section.s {
+  padding: 5rem 1.4rem;
+  background: rgba(14, 11, 7, .4);
+  border-top: 1px solid var(--line);
+}
+
+.s + .s {
+  background: rgba(14, 11, 7, .55);
+}
+
+.sec-title {
+  font-family: var(--head);
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
+  color: #fff;
+  line-height: 1.5;
+}
+
+.rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .7rem;
+  margin: .8rem 0 2.4rem;
+  color: var(--g1);
+}
+
+.rule::before,
+.rule::after {
+  content: "";
+  width: 64px;
+  height: 1px;
+  background: currentColor;
+  opacity: .7;
+}
+
+.rule b {
+  width: 7px;
+  height: 7px;
+  transform: rotate(45deg);
+  background: currentColor;
+}
+
+/* ===== COUNTDOWN RINGS ===== */
+.rings {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  direction: ltr;
+}
+
+.ring {
+  position: relative;
+  width: 96px;
+  height: 96px;
+}
+
+.ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ring circle {
+  fill: none;
+  stroke-width: 4;
+}
+
+.ring .bg2 {
+  stroke: var(--line);
+}
+
+.ring .fg {
+  stroke: var(--g1);
+  stroke-linecap: round;
+  transition: stroke-dashoffset .9s linear;
+}
+
+.ring div {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+}
+
+.ring b {
+  font-size: 1.7rem;
+  color: #fff;
+}
+
+.ring span {
+  font-size: .75rem;
+  color: var(--mut);
+}
+
+#cd-done {
+  display: none;
+  font-size: 1.4rem;
+  color: var(--g2);
+}
+
+/* ===== TIMELINE / PROGRAM ===== */
+.prog .wrap {
+  position: relative;
+}
+
+.tl {
+  position: relative;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 1rem 1.4rem 0;
+}
+
+.tl::before {
+  content: "";
+  position: absolute;
+  inset: 1rem auto 0 50%;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, transparent, var(--gold) 8%, var(--gold) 92%, transparent);
+  opacity: .6;
+}
+
+.tl-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.tl-row:last-child {
+  margin-bottom: 0;
+}
+
+.tl-row::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: .7rem;
+  width: 12px;
+  height: 12px;
+  translate: -50% 0;
+  rotate: 45deg;
+  border: 2px solid var(--gold);
+  background: #0E0B07;
+  z-index: 2;
+}
+
+.tl-ev,
+.tl-date {
+  display: flex;
+  flex-direction: column;
+}
+
+.tl-ev {
+  align-items: flex-end;
+  text-align: end;
+}
+
+.tl-date {
+  align-items: flex-start;
+  text-align: start;
+}
+
+.tl-row.flip .tl-ev {
+  grid-column: 2;
+  align-items: flex-start;
+  text-align: start;
+}
+
+.tl-row.flip .tl-date {
+  grid-column: 1;
+  grid-row: 1;
+  align-items: flex-end;
+  text-align: end;
+}
+
+.tl-date .d {
+  font-family: Georgia, serif;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tl-date .m,
+.tl-date .wd {
+  font-size: .95rem;
+  color: var(--text);
+}
+
+.tl-date .wd {
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+.tl-ev h3 {
+  font-family: var(--title);
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: var(--gold-l);
+  line-height: 1.3;
+}
+
+.tl-ev .t {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .9rem;
+  color: var(--muted);
+  margin-top: .4rem;
+}
+
+.tl-ev .t svg {
+  color: var(--gold);
+  flex: none;
+}
+
+.tl-ev .v {
+  font-family: Georgia, serif;
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-top: .5rem;
+  line-height: 1.4;
+}
+
+.tl-ev .c {
+  font-size: .8rem;
+  color: var(--muted);
+}
+
+.tl .acts {
+  justify-content: flex-end;
+  margin-top: .9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+
+.tl-row.flip .acts {
+  justify-content: flex-start;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .25rem .85rem;
+  border-radius: 99px;
+  font-size: .8rem;
+}
+
+.tl .pill.dir {
+  color: #fff;
+  background: linear-gradient(135deg, #8E2A2A, #5E1A1A);
+}
+
+.tl .pill.cal {
+  background: none;
+  color: var(--gold-l);
+  box-shadow: inset 0 0 0 1px rgba(210, 174, 92, .55);
+}
+
+/* ===== END SECTION ===== */
+.end {
+  padding: 6rem 1.5rem 5rem;
+  background: rgba(14, 11, 7, .35);
+}
+
+.greet {
+  font-size: 1.6rem;
+  color: var(--g2);
+}
+
+.big {
+  font-family: var(--head);
+  font-size: clamp(3rem, 12vw, 4.4rem);
+  line-height: 1.4;
+}
+
+.e-date {
+  display: inline-block;
+  margin-top: 1.2rem;
+  padding: .4rem 1.8rem;
+  border-radius: 99px;
+  border: 1px solid var(--g1);
+  color: var(--g2);
+  direction: ltr;
+  letter-spacing: .1em;
+}
+
+footer {
+  background: #070503;
+  padding: 1.4rem;
+  font-family: var(--head);
+  border-top: 1px solid var(--line);
+}
+
+/* ===== MUSIC BUTTON ===== */
+.music {
+  position: fixed;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  z-index: 130;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--g1);
+  background: rgba(0, 0, 0, .85);
+  color: var(--g2);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.music.on {
+  display: flex;
+}
+
+.music .off {
+  display: none;
+}
+
+.music.muted .on-i {
+  display: none;
+}
+
+.music.muted .off {
+  display: block;
+}
+
+#yt {
+  position: fixed;
+  left: -9999px;
+  width: 240px;
+  height: 240px;
+  border: 0;
+  pointer-events: none;
+}
+
+/* ===== INTRO — SHEER VEIL ===== */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 140;
+  background: transparent;
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity 1.2s ease 1.9s;
+}
+
+.intro.open {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.i-scene {
+  position: absolute;
+  inset: 0;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(210,174,92,.14), transparent 60%),
-    radial-gradient(ellipse at 50% 100%, rgba(178,50,61,.1), transparent 60%);
-}
-.cd>div{position:relative;max-width:560px;margin:0 auto}
-.section-title{
-  font-family:var(--title);font-weight:400;
-  font-size:clamp(1.9rem,6.5vw,2.6rem);
-  color:var(--gold-l);line-height:1.4;
-}
-.divider{
-  display:flex;align-items:center;justify-content:center;
-  gap:.6rem;margin:1.2rem 0 2.4rem;color:var(--gold);
-}
-.divider::before,.divider::after{
-  content:"";height:1px;width:60px;
-  background:linear-gradient(90deg,transparent,currentColor);
-}
-.divider::after{background:linear-gradient(270deg,transparent,currentColor)}
-.divider span{
-  width:6px;height:6px;background:currentColor;transform:rotate(45deg);
+    radial-gradient(ellipse 38% 28% at 50% 56%, rgba(255, 225, 160, .45), transparent 70%),
+    rgba(5, 4, 3, .35);
+  transition: opacity 2.4s;
 }
 
-.boxes{
-  display:flex;justify-content:center;gap:.7rem;direction:ltr;
-}
-.box{
-  width:76px;padding:.9rem 0 .75rem;
-  border-radius:16px;
-  background:rgba(20,16,10,.78);
-  border:1px solid rgba(210,174,92,.27);
-  box-shadow:0 12px 30px -12px rgba(0,0,0,.5);
-  backdrop-filter:blur(6px);
-}
-.box b{
-  display:block;font-family:var(--num);
-  font-size:2.2rem;font-weight:600;color:var(--gold-l);
-  line-height:1.1;font-variant-numeric:tabular-nums;
-}
-.box span{
-  font-size:.8rem;color:var(--muted);letter-spacing:.05em;
-}
-.cd-done{
-  font-family:var(--title);font-size:2rem;color:var(--gold-l);
-  display:none;margin-top:2rem;
-}
-.clock{
-  width:min(230px,66vw);height:auto;margin:3.5rem auto 0;display:block;
-  filter:drop-shadow(0 14px 24px rgba(0,0,0,.6));
+.open .i-scene {
+  opacity: 0;
 }
 
-/* ============================================================
-   PROGRAM
-   ============================================================ */
-.prog{
-  position:relative;padding:6rem 1.4rem;
-  background:var(--bg);
+.i-scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, .6));
 }
-.prog::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
+
+.i-slit {
+  position: absolute;
+  left: 50%;
+  top: 16%;
+  bottom: 12%;
+  width: 3px;
+  translate: -50% 0;
+  z-index: 1;
+  background: linear-gradient(180deg, transparent, #FFF1C9 25%, #FFF1C9 75%, transparent);
+  filter: blur(2px);
+  box-shadow: 0 0 70px 24px rgba(255, 225, 160, .35);
+  animation: flick 3.2s ease-in-out infinite;
+  transition: opacity 1s;
+}
+
+.open .i-slit {
+  opacity: 0;
+}
+
+@keyframes flick {
+  50% { opacity: .55; }
+}
+
+.veil {
+  position: absolute;
+  top: -5%;
+  bottom: -5%;
+  width: 56%;
+  z-index: 2;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(210,174,92,.1), transparent 65%);
-}
-.prog .wrap{position:relative}
-.tl{
-  position:relative;max-width:520px;margin:0 auto;
-  padding-top:1rem;
-}
-.tl::before{
-  content:"";position:absolute;inset:1rem auto 1rem 50%;
-  width:1px;transform:translateX(-50%);
-  background:linear-gradient(180deg,transparent,var(--gold) 8%,var(--gold) 92%,transparent);
-  opacity:.6;
-}
-.tl-row{
-  position:relative;display:grid;grid-template-columns:1fr 1fr;
-  gap:2rem;margin-bottom:3.5rem;
-}
-.tl-row:last-child{margin-bottom:0}
-.tl-row::before{
-  content:"";position:absolute;left:50%;top:.7rem;
-  width:12px;height:12px;translate:-50% 0;rotate:45deg;
-  border:2px solid var(--gold);background:var(--bg);
-  z-index:2;
-}
-.tl-ev,.tl-date{
-  display:flex;flex-direction:column;
-}
-.tl-ev{
-  align-items:flex-end;text-align:end;
-}
-.tl-date{
-  align-items:flex-start;text-align:start;
-}
-.tl-row.flip .tl-ev{
-  grid-column:2;align-items:flex-start;text-align:start;
-}
-.tl-row.flip .tl-date{
-  grid-column:1;grid-row:1;align-items:flex-end;text-align:end;
-}
-.tl-date .d{
-  font-family:var(--num);font-size:3rem;font-weight:600;line-height:1;
-  background:var(--grad-gold);
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-.tl-date .m,.tl-date .wd{
-  font-size:.95rem;color:var(--text);
-}
-.tl-date .wd{color:var(--muted);font-size:.85rem}
-.tl-ev h3{
-  font-family:var(--title);font-weight:400;font-size:1.4rem;
-  color:var(--gold-l);line-height:1.3;
-}
-.tl-ev .t{
-  display:inline-flex;align-items:center;gap:.35rem;
-  font-size:.9rem;color:var(--muted);margin-top:.4rem;
-}
-.tl-ev .t svg{color:var(--gold);flex:none}
-.tl-ev .v{
-  font-family:var(--num);font-size:1.05rem;color:var(--text);
-  margin-top:.5rem;line-height:1.4;
-}
-.tl-ev .c{font-size:.8rem;color:var(--muted);margin-top:.1rem}
-.acts{
-  display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem;
-  justify-content:flex-end;
-}
-.tl-row.flip .acts{justify-content:flex-start}
-.pill{
-  display:inline-flex;align-items:center;gap:.35rem;
-  padding:.25rem .85rem;border-radius:99px;
-  font-size:.8rem;
-  transition:transform .3s;
-}
-.pill:hover{transform:scale(1.05)}
-.pill.dir{
-  color:#fff;background:linear-gradient(135deg,#8E2A2A,#5E1A1A);
-}
-.pill.cal{
-  color:var(--gold-l);
-  box-shadow:inset 0 0 0 1px rgba(210,174,92,.55);
-}
-.pill svg{flex:none}
-
-/* ============================================================
-   CLOSING
-   ============================================================ */
-.end{
-  position:relative;padding:6rem 1.5rem 5rem;overflow:hidden;
-  background:
-    radial-gradient(ellipse at 50% 100%, rgba(178,50,61,.15), transparent 65%),
-    radial-gradient(ellipse at 50% 0%, rgba(210,174,92,.12), transparent 60%),
-    var(--bg-2);
-  isolation:isolate;
-}
-.end .fx{position:absolute;inset:0;pointer-events:none;z-index:-1}
-.end .dot{
-  position:absolute;border-radius:50%;opacity:0;
-  animation:rise linear infinite;
-}
-@keyframes rise{
-  0%{opacity:0;transform:translateY(40px) scale(.5)}
-  20%{opacity:.85;transform:translateY(0) scale(1)}
-  80%{opacity:.85}
-  100%{opacity:0;transform:translateY(-190px) scale(.6)}
-}
-.end-greet{
-  font-size:1.7rem;color:var(--gold-l);
-  animation:breath 5s ease-in-out infinite;
-}
-@keyframes breath{
-  50%{transform:translateY(-3px);opacity:.85}
-}
-.end .big{
-  font-family:var(--title);
-  font-size:clamp(3rem,12vw,4.4rem);line-height:1.4;
-  margin-top:1rem;
-  filter:drop-shadow(0 4px 16px rgba(0,0,0,.85));
-}
-.rings-ico{
-  display:block;width:44px;margin:1.4rem auto 0;color:var(--gold);
-  animation:ringGlow 3s ease-in-out infinite;
-}
-@keyframes ringGlow{
-  0%,100%{filter:drop-shadow(0 0 4px rgba(210,174,92,.4))}
-  50%{filter:drop-shadow(0 0 14px rgba(210,174,92,.9))}
-}
-.end-date{
-  display:inline-block;margin-top:1.4rem;
-  padding:.55rem 1.8rem;border-radius:99px;
-  font-family:var(--num);font-size:1.2rem;letter-spacing:.14em;
-  color:var(--gold-l);
-  border:1px solid rgba(210,174,92,.5);
-  background:rgba(20,16,10,.7);
+    repeating-linear-gradient(100deg, rgba(255, 255, 255, 0) 0 26px, rgba(255, 255, 255, .17) 42px, rgba(255, 255, 255, 0) 70px),
+    repeating-linear-gradient(78deg, rgba(0, 0, 0, .3) 0 16px, rgba(0, 0, 0, 0) 48px),
+    linear-gradient(180deg, rgba(215, 205, 190, .22), rgba(110, 100, 85, .3));
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 70px rgba(0, 0, 0, .65);
+  animation: fold 10s ease-in-out infinite alternate;
+  transition: transform 2.8s cubic-bezier(.65, 0, .2, 1), filter 2.8s;
 }
 
-footer{
-  background:#070503;padding:1.5rem 1rem 2rem;
-  font-size:.85rem;color:var(--gold-l);opacity:.85;
-  text-align:center;border-top:1px solid rgba(210,174,92,.15);
+.veil.l {
+  left: -6%;
+  transform-origin: left top;
+  -webkit-mask-image: linear-gradient(to left, transparent, #000 16%);
+  mask-image: linear-gradient(to left, transparent, #000 16%);
 }
-footer .mark{font-family:var(--title);font-size:1rem;opacity:.9}
 
-.music{
-  position:fixed;bottom:1.2rem;right:1.2rem;z-index:130;
-  width:44px;height:44px;border-radius:50%;
-  border:1px solid rgba(210,174,92,.5);
-  background:rgba(20,16,10,.85);color:var(--gold-l);
-  cursor:pointer;display:none;align-items:center;justify-content:center;
-  backdrop-filter:blur(6px);
+.veil.r {
+  right: -6%;
+  transform-origin: right top;
+  background-position-x: 60px;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 16%);
+  mask-image: linear-gradient(to right, transparent, #000 16%);
 }
-.music.on{display:flex}
-.music .ic-off{display:none}
-.music.muted .ic-on{display:none}
-.music.muted .ic-off{display:block}
-#yt{position:fixed;left:-9999px;bottom:0;width:240px;height:240px;border:0;pointer-events:none}
 
-@media (prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important}
-  .rev{opacity:1;transform:none}
-  .end .dot{display:none}
-  .intro-top,.intro-bottom{opacity:1;transform:none}
+@keyframes fold {
+  to { background-position-x: 90px, -70px, 0; }
+}
+
+.open .veil.l {
+  transform: translateX(-108%) skewX(-7deg);
+  filter: blur(6px);
+}
+
+.open .veil.r {
+  transform: translateX(108%) skewX(7deg);
+  filter: blur(6px);
+}
+
+.intro-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  padding: max(1.8rem, 4svh) 1.5rem 0;
+  opacity: 0;
+  transform: translateY(-14px);
+  animation: iin .9s ease .3s forwards;
+  text-shadow: 0 2px 20px #000;
+  pointer-events: none;
+}
+
+.intro-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  padding: 0 1.5rem max(4rem, 9svh);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  transform: translateY(14px);
+  animation: iin .9s ease .7s forwards;
+  pointer-events: none;
+}
+
+.intro-bottom * {
+  pointer-events: auto;
+}
+
+@keyframes iin {
+  to { opacity: 1; transform: none; }
+}
+
+.intro-top .eyebrow {
+  font-size: .9rem;
+  letter-spacing: .3em;
+  color: var(--gold-l);
+}
+
+.intro-top .names {
+  font-family: var(--title);
+  font-size: clamp(2.6rem, 10vw, 4rem);
+  line-height: 1.2;
+  margin-top: .8rem;
+}
+
+.intro-top .amp {
+  display: inline-block;
+  font-size: .55em;
+  color: var(--gold);
+  margin: 0 .2em;
+  -webkit-text-fill-color: var(--gold);
+}
+
+.intro-top .date {
+  font-size: .9rem;
+  letter-spacing: .2em;
+  color: var(--gold-l);
+  margin-top: .6rem;
+}
+
+.btn-open {
+  position: relative;
+  overflow: hidden;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  color: #1A1408;
+  padding: .85rem 2.4rem;
+  border-radius: 99px;
+  background: linear-gradient(135deg, #EED79C, #9A7628);
+  box-shadow: 0 12px 32px -8px rgba(154, 118, 40, .7);
+}
+
+.btn-open::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  left: -30%;
+  width: 30%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, .55), transparent);
+  animation: bs 3s ease-in-out infinite;
+}
+
+@keyframes bs {
+  0%, 60% { transform: translateX(-100%); }
+  100% { transform: translateX(500%); }
+}
+
+.intro-note {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .8rem;
+  color: var(--gold-l);
+}
+
+.intro.open .intro-top,
+.intro.open .intro-bottom {
+  opacity: 0;
+  transition: opacity .5s;
+  animation: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 420px) {
+  .ring {
+    width: 80px;
+    height: 80px;
+  }
+  .tk {
+    grid-template-columns: 90px 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+  .rev {
+    opacity: 1;
+    transform: none;
+  }
 }
 </style>
 </head>
 <body class="locked">
 
-<!-- ===== CONFIG ===== -->
-<script>
-const CONFIG = {
-  groom: 'سليم', bride: 'رحمة',
-  groomFamily: 'عائلة بن يوسف', brideFamily: 'عائلة العياري',
-  weddingDate: '2027-10-09T21:00:00+01:00',   // Tunisia time
-  youtubeId: 'QVWld3VHl5w',
-  musicStart: 36,   // start at 00:36
-  events: [
-    {title:'ليلة الحنة', time:'19:30', venue:'دار العروس',  city:'نابل',          day:'07', month:'أكتوبر', year:'2027', wd:'الخميس', start:'20271007T193000', end:'20271008T003000'},
-    {title:'حفل الزفاف', time:'21:00', venue:'قصر الحمامات', city:'الحمامات، نابل', day:'09', month:'أكتوبر', year:'2027', wd:'السبت',  start:'20271009T210000', end:'20271010T020000'}
-  ]
-};
-</script>
+<!-- Background video -->
+<div class="bg"><video id="vid" class="vid" muted loop playsinline preload="auto" autoplay></video></div>
 
-<!-- ============================================================
-     INTRO — dark cinematic doors
-     ============================================================ -->
+<!-- Intro overlay -->
 <div class="intro" id="intro" role="button" tabindex="0" aria-label="اضغط لفتح الدعوة">
-  <div class="intro-hall"></div>
-  <div class="intro-doors">
-    <div class="door l">
-      <span class="pnl p1"></span><span class="pnl p2"></span><span class="pnl p3"></span>
-      <span class="hinge h1"></span><span class="hinge h2"></span><span class="hinge h3"></span>
-      <span class="pull"></span>
-    </div>
-    <div class="door r">
-      <span class="pnl p1"></span><span class="pnl p2"></span><span class="pnl p3"></span>
-      <span class="hinge h1"></span><span class="hinge h2"></span><span class="hinge h3"></span>
-      <span class="pull"></span>
-    </div>
-  </div>
-  <div class="intro-frame"></div>
-  <div class="intro-seam"></div>
-
+  <div class="i-scene"></div>
+  <div class="i-slit"></div>
+  <div class="veil l"></div>
+  <div class="veil r"></div>
   <div class="intro-top">
     <p class="eyebrow">أنتم مدعوون</p>
-    <p class="names gold-text">
-      <span class="groom"></span><span class="amp">&amp;</span><span class="bride"></span>
-    </p>
+    <p class="names gold-text"><span class="groom"></span><span class="amp">&amp;</span><span class="bride"></span></p>
     <p class="date">السبت · 09 أكتوبر 2027</p>
   </div>
-
   <div class="intro-bottom">
     <button class="btn-open" type="button">افتح الدعوة</button>
     <p class="intro-note">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-        <path d="M11 5 6 9H2v6h4l5 4V5z"/>
-        <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
-        <path d="M19 5a10 10 0 0 1 0 14"/>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/>
       </svg>
       التجربة أجمل مع تشغيل الصوت
     </p>
@@ -828,214 +849,203 @@ const CONFIG = {
 </div>
 
 <main>
-<!-- ============================================================
-     HERO — Split layout exactly like the screenshot
-     ============================================================ -->
-<section class="hero">
-  
-  <!-- NEW: Falling Stars Animation Container -->
-  <div class="hero-stars">
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-  </div>
-
-  <!-- TEXT SIDE (Right) -->
-  <div class="hero-text">
-    <div class="hero-content rev">
-      
-      <p class="hero-verse">
-        بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ<br>
-        "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ"
-      </p>
-      
-      <div class="hero-fams">
-        <div class="hero-fam">
-          <small>عائلة العريس</small>
-          <p class="gfam"></p>
-        </div>
-        <div class="hero-divider"></div>
-        <div class="hero-fam">
-          <small>عائلة العروس</small>
-          <p class="bfam"></p>
-        </div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="h-text rev">
+      <p class="verse">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+      <div class="fams">
+        <div><small>عائلة العريس</small><p class="gfam"></p></div>
+        <hr>
+        <div><small>عائلة العروس</small><p class="bfam"></p></div>
       </div>
-      
-      <p class="hero-invite">يتشرفون بدعوتكم لحضور حفل زفاف</p>
-      <h1 class="hero-names gold-text">
-        <span class="groom"></span><span class="amp">&amp;</span><span class="bride"></span>
-      </h1>
-      
-      <div class="hero-date">
-        <span class="wd">السبت</span>
-        <span class="num">09</span>
+      <p class="invite">يتشرفون بدعوتكم لحضور حفل زفاف</p>
+      <h1 class="h-names shine"><span class="groom"></span><span class="amp">&amp;</span><span class="bride"></span></h1>
+      <div class="h-date">
+        <span>السبت</span>
+        <span class="n">09</span>
         <span class="bar"></span>
         <span>أكتوبر</span>
         <span class="bar"></span>
-        <span class="num">2027</span>
+        <span class="n">2027</span>
       </div>
-
     </div>
-  </div>
+  </section>
 
-  <!-- MEDIA SIDE (Left) -->
-  <div class="hero-media">
-    <video 
-      class="hero-video" 
-      src="images/dance-nuit.mp4" 
-      poster="images/dance-nuit-poster.jpg" 
-      autoplay 
-      muted 
-      loop 
-      playsinline>
-    </video>
-  </div>
-
-</section>
-
-<!-- ============================================================
-     COUNTDOWN + CLOCK
-     ============================================================ -->
-<section class="cd" id="countdown">
-  <div>
-    <div class="rev">
-      <h2 class="section-title">العد التنازلي ليومنا الكبير</h2>
-      <div class="divider"><span></span></div>
+  <!-- Countdown -->
+  <section class="s">
+    <div class="rev wrap">
+      <h2 class="sec-title">العد التنازلي ليومنا الكبير</h2>
+      <div class="rule"><b></b></div>
+      <div class="rings" id="rings"></div>
+      <p id="cd-done">الحمد لله، تمّ الزفاف</p>
     </div>
+  </section>
 
-    <div class="rev boxes" id="boxes">
-      <div class="box"><b id="cd-d">--</b><span>يوم</span></div>
-      <div class="box"><b id="cd-h">--</b><span>ساعة</span></div>
-      <div class="box"><b id="cd-m">--</b><span>دقيقة</span></div>
-      <div class="box"><b id="cd-s">--</b><span>ثانية</span></div>
-    </div>
-    <p class="cd-done" id="cd-done">الحمد لله، تمّ الزفاف</p>
-
-    <!-- Live analog clock -->
-    <svg class="clock rev" viewBox="0 0 200 200" aria-hidden="true">
-      <defs>
-        <linearGradient id="ringGold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#EED79C"/><stop offset=".5" stop-color="#D2AE5C"/><stop offset="1" stop-color="#9A7628"/>
-        </linearGradient>
-        <radialGradient id="clockFace" cx=".5" cy=".4" r=".7">
-          <stop offset="0" stop-color="#1B160E"/><stop offset="1" stop-color="#0E0B07"/>
-        </radialGradient>
-      </defs>
-      <circle cx="100" cy="100" r="96" fill="url(#clockFace)" stroke="url(#ringGold)" stroke-width="4"/>
-      <circle cx="100" cy="100" r="84" fill="none" stroke="#D2AE5C" stroke-width=".7" opacity=".6"/>
-      <g id="ticks"></g>
-      <g font-family="Cormorant Garamond,serif" font-size="17" fill="#EED79C" text-anchor="middle" dominant-baseline="central" font-weight="600">
-        <text x="100" y="42">12</text><text x="158" y="100">3</text><text x="100" y="158">6</text><text x="42" y="100">9</text>
-      </g>
-      <g id="hh"><line x1="100" y1="108" x2="100" y2="58" stroke="#F3E9D2" stroke-width="4" stroke-linecap="round"/></g>
-      <g id="mh"><line x1="100" y1="112" x2="100" y2="38" stroke="#F3E9D2" stroke-width="2.5" stroke-linecap="round"/></g>
-      <g id="sh"><line x1="100" y1="118" x2="100" y2="32" stroke="#D2AE5C" stroke-width="1" stroke-linecap="round"/></g>
-      <circle cx="100" cy="100" r="5" fill="#D2AE5C"/>
-      <circle cx="100" cy="100" r="2" fill="#1B160E"/>
-    </svg>
-  </div>
-</section>
-
-<!-- ============================================================
-     PROGRAM
-     ============================================================ -->
-<section class="prog">
-  <div class="wrap">
-    <div class="rev">
-      <h2 class="section-title">برنامج الأفراح</h2>
-      <div class="divider"><span></span></div>
+  <!-- Program -->
+  <section class="s prog">
+    <div class="rev wrap">
+      <h2 class="sec-title">برنامج الأفراح</h2>
+      <div class="rule"><b></b></div>
     </div>
     <div class="tl" id="tl"></div>
-  </div>
-</section>
+  </section>
 
-<!-- ============================================================
-     CLOSING
-     ============================================================ -->
-<section class="end">
-  <div class="fx" id="fx" aria-hidden="true"></div>
-  <div class="wrap rev">
-    <p class="end-greet">حضوركم يزيدنا فرحاً وسروراً</p>
-    <p class="big gold-text">
-      <span class="groom"></span> و <span class="bride"></span>
-    </p>
-    <svg class="rings-ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-      <circle cx="18" cy="28" r="11" stroke="currentColor" stroke-width="1.8"/>
-      <circle cx="30" cy="28" r="11" stroke="currentColor" stroke-width="1.8"/>
-      <path d="M30 6l3 5h-6z" fill="currentColor"/>
-    </svg>
-    <br>
-    <span class="end-date num">السبت · 09 أكتوبر 2027</span>
-  </div>
-</section>
+  <!-- End -->
+  <section class="end">
+    <div class="rev">
+      <p class="greet">حضوركم يزيدنا فرحاً وسروراً</p>
+      <p class="big shine"><span class="groom"></span> و <span class="bride"></span></p>
+      <span class="e-date">09 · 10 · 2027</span>
+    </div>
+  </section>
 </main>
 
-<footer>
-  <p class="mark gold-text">الليلة الذهبية</p>
-</footer>
+<footer><p class="shine">دعوة زفاف</p></footer>
 
 <div id="yt"></div>
-
-<button class="music" id="music" aria-label="Pause / play music">
-  <svg class="ic-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M11 5 6 9H2v6h4l5 4V5z"/>
-    <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
-    <path d="M19 5a10 10 0 0 1 0 14"/>
+<button class="music" id="music" aria-label="Music">
+  <svg class="on-i" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/>
   </svg>
-  <svg class="ic-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M11 5 6 9H2v6h4l5 4V5z"/>
-    <line x1="22" y1="9" x2="16" y2="15"/>
-    <line x1="16" y1="9" x2="22" y2="15"/>
+  <svg class="off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/>
   </svg>
 </button>
 
 <script>
-const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
+const CONFIG = {
+  groom: 'أمين',
+  bride: 'مريم',
+  groomFamily: 'عائلة بن يوسف',
+  brideFamily: 'عائلة العياري',
+  weddingDate: '2027-10-09T21:00:00+01:00',
+  youtubeId: 'QVWld3VHl5w',
+  musicStart: 36,
+  video: 'images/bal-royal.mp4',
+  pauseAt: 5,   // seconds — video pauses here before opening
+  events: [
+    {
+      title: 'ليلة الحنة',
+      time: '19:30',
+      venue: 'دار العروس',
+      city: 'نابل',
+      day: '07',
+      month: 'أكتوبر',
+      year: '2027',
+      wd: 'الخميس',
+      start: '20271007T193000',
+      end: '20271008T003000'
+    },
+    {
+      title: 'حفل الزفاف',
+      time: '21:00',
+      venue: 'قصر الحمامات',
+      city: 'الحمامات، نابل',
+      day: '09',
+      month: 'أكتوبر',
+      year: '2027',
+      wd: 'السبت',
+      start: '20271009T210000',
+      end: '20271010T020000'
+    }
+  ]
+};
 
-/* ---- Fill names + families ---- */
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const pad = n => String(n).padStart(2, '0');
+
+// Fill in names
 $$('.groom').forEach(e => e.textContent = CONFIG.groom);
 $$('.bride').forEach(e => e.textContent = CONFIG.bride);
 $('.gfam').textContent = CONFIG.groomFamily;
 $('.bfam').textContent = CONFIG.brideFamily;
 
-/* ---- Clock ticks ---- */
-(function buildTicks(){
-  let s = '';
-  for (let i = 0; i < 60; i++) {
-    const isH = i % 5 === 0;
-    s += `<line x1="100" y1="${isH ? 20 : 22}" x2="100" y2="${isH ? 30 : 25}"
-            stroke="${isH ? '#9A7628' : '#D2AE5C'}"
-            stroke-width="${isH ? 2 : .8}"
-            transform="rotate(${i * 6} 100 100)"/>`;
+// ===== VIDEO: autoplay until 5s, then pause until door opens =====
+const vid = $('#vid');
+vid.muted = true;
+vid.loop = true;
+vid.preload = 'auto';
+vid.src = CONFIG.video;
+
+let prePaused = false;   // paused at the 5s mark (before the door opens)
+let doorOpened = false;  // intro opened
+
+function pauseAtMark() {
+  if (prePaused || doorOpened) return;
+  if (vid.currentTime >= CONFIG.pauseAt) {
+    vid.pause();
+    vid.currentTime = CONFIG.pauseAt;
+    prePaused = true;
   }
-  $('#ticks').innerHTML = s;
-})();
-
-/* ---- Live clock hands ---- */
-function tickClock(){
-  const n = new Date(), s = n.getSeconds() + n.getMilliseconds()/1000,
-        m = n.getMinutes() + s/60, h = (n.getHours() % 12) + m/60;
-  $('#sh').setAttribute('transform', `rotate(${s*6} 100 100)`);
-  $('#mh').setAttribute('transform', `rotate(${m*6} 100 100)`);
-  $('#hh').setAttribute('transform', `rotate(${h*30} 100 100)`);
-  requestAnimationFrame(tickClock);
 }
-tickClock();
 
-/* ---- Program timeline ---- */
-const enc = encodeURIComponent, names = CONFIG.groom + ' & ' + CONFIG.bride;
-const icoClock = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
-const icoPin = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>';
-const icoCal = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M3 10h18"/><rect x="3" y="4" width="18" height="18" rx="2"/></svg>';
+vid.addEventListener('timeupdate', pauseAtMark);
+
+// Autoplay on load; if blocked, hold at the first frame
+function tryAutoplay() {
+  vid.play().catch(() => {
+    vid.pause();
+    prePaused = true;
+  });
+}
+
+if (vid.readyState >= 2) {
+  tryAutoplay();
+} else {
+  vid.addEventListener('loadeddata', tryAutoplay, { once: true });
+}
+
+// ===== COUNTDOWN =====
+const target = new Date(CONFIG.weddingDate);
+const C = 2 * Math.PI * 44;
+const units = [
+  ['d', 'يوم', 365],
+  ['h', 'ساعة', 24],
+  ['m', 'دقيقة', 60],
+  ['s', 'ثانية', 60]
+];
+
+$('#rings').innerHTML = units.map(([k, l]) =>
+  `<div class="ring">
+    <svg viewBox="0 0 100 100">
+      <circle class="bg2" cx="50" cy="50" r="44"/>
+      <circle class="fg" id="r-${k}" cx="50" cy="50" r="44" stroke-dasharray="${C}" stroke-dashoffset="${C}"/>
+    </svg>
+    <div><b id="v-${k}">--</b><span>${l}</span></div>
+  </div>`
+).join('');
+
+function tick() {
+  const diff = target - new Date();
+  if (diff <= 0) {
+    $('#rings').style.display = 'none';
+    $('#cd-done').style.display = 'block';
+    return;
+  }
+  const v = {
+    d: Math.floor(diff / 864e5),
+    h: Math.floor(diff / 36e5) % 24,
+    m: Math.floor(diff / 6e4) % 60,
+    s: Math.floor(diff / 1e3) % 60
+  };
+  units.forEach(([k, , max]) => {
+    $('#v-' + k).textContent = k === 'd' ? v[k] : pad(v[k]);
+    $('#r-' + k).style.strokeDashoffset = C * (1 - Math.min(v[k] / max, 1));
+  });
+}
+
+tick();
+setInterval(tick, 1000);
+
+// ===== TIMELINE =====
+const enc = encodeURIComponent;
+const names = CONFIG.groom + ' & ' + CONFIG.bride;
+const ico = (w, d) =>
+  `<svg width="${w}" height="${w}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const icoClock = ico(14, '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>');
+const icoPin = ico(12, '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>');
+const icoCal = ico(12, '<path d="M8 2v4"/><path d="M16 2v4"/><path d="M3 10h18"/><rect x="3" y="4" width="18" height="18" rx="2"/>');
 
 $('#tl').innerHTML = CONFIG.events.map((e, i) => {
   const q = `${e.venue}, ${e.city}`;
@@ -1060,98 +1070,99 @@ $('#tl').innerHTML = CONFIG.events.map((e, i) => {
   </div>`;
 }).join('');
 
-/* ---- Countdown ---- */
-const target = new Date(CONFIG.weddingDate), pad = n => String(n).padStart(2,'0');
-function tickCountdown(){
-  const diff = target - new Date();
-  if (diff <= 0) {
-    $('#boxes').style.display = 'none';
-    $('#cd-done').style.display = 'block';
-    return;
-  }
-  $('#cd-d').textContent = Math.floor(diff / 864e5);
-  $('#cd-h').textContent = pad(Math.floor(diff / 36e5) % 24);
-  $('#cd-m').textContent = pad(Math.floor(diff / 6e4) % 60);
-  $('#cd-s').textContent = pad(Math.floor(diff / 1e3) % 60);
-}
-tickCountdown(); setInterval(tickCountdown, 1000);
-
-/* ---- Closing floating dots ---- */
-(function makeDots(){
-  const L = $('#fx'), cols = ['#EED79C','#D2AE5C','#FFF1C9','#8E2A2A'];
-  for (let i = 0; i < 28; i++) {
-    const s = document.createElement('span'), z = 5 + Math.random() * 10;
-    s.className = 'dot';
-    s.style.cssText =
-      `left:${Math.random()*100}%;
-       bottom:${Math.random()*45}%;
-       width:${z}px;height:${z}px;
-       background:${cols[i%4]};
-       animation-duration:${6 + Math.random()*6}s;
-       animation-delay:-${Math.random()*10}s;`;
-    L.appendChild(s);
-  }
-})();
-
-/* ---- Scroll reveal ---- */
-const io = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-}), { threshold: .12 });
+// ===== REVEAL ON SCROLL =====
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: .12 });
 $$('.rev').forEach(el => io.observe(el));
 
-/* ---- YouTube music (hidden player, starts at 00:36) ---- */
-const musicBtn = $('#music');
-let yt = null, ytReady = false, wantPlay = false;
-const setMusicIcon = playing => musicBtn.classList.toggle('muted', !playing);
+// ===== MUSIC =====
+const mb = $('#music');
+let yt = null, ready = false, want = false;
+const icon = p => mb.classList.toggle('muted', !p);
 
-window.onYouTubeIframeAPIReady = function(){
+window.onYouTubeIframeAPIReady = () => {
   yt = new YT.Player('yt', {
-    width: 240, height: 240,
+    width: 240,
+    height: 240,
     videoId: CONFIG.youtubeId,
     playerVars: {
-      start: CONFIG.musicStart, playsinline: 1, controls: 0, disablekb: 1, rel: 0,
-      origin: location.origin.startsWith('http') ? location.origin : undefined
+      start: CONFIG.musicStart,
+      playsinline: 1,
+      controls: 0,
+      disablekb: 1,
+      rel: 0
     },
     events: {
-      onReady() { ytReady = true; if (wantPlay) startMusic(); },
-      onError(e) { console.warn('YouTube error', e.data); },
+      onReady() {
+        ready = true;
+        if (want) play();
+      },
       onStateChange(e) {
-        if (e.data === YT.PlayerState.PLAYING) setMusicIcon(true);
-        else if (e.data === YT.PlayerState.PAUSED) setMusicIcon(false);
-        else if (e.data === YT.PlayerState.ENDED) { yt.seekTo(CONFIG.musicStart, true); yt.playVideo(); }
+        if (e.data === 1) icon(true);
+        else if (e.data === 2) icon(false);
+        else if (e.data === 0) {
+          yt.seekTo(CONFIG.musicStart, true);
+          yt.playVideo();
+        }
       }
     }
   });
 };
-(function loadYT(){
-  const t = document.createElement('script');
-  t.src = 'https://www.youtube.com/iframe_api';
-  document.head.appendChild(t);
-})();
 
-function startMusic(){
-  try { yt.unMute(); yt.seekTo(CONFIG.musicStart, true); yt.playVideo(); } catch (_) {}
+const t = document.createElement('script');
+t.src = 'https://www.youtube.com/iframe_api';
+document.head.appendChild(t);
+
+function play() {
+  try {
+    yt.unMute();
+    yt.seekTo(CONFIG.musicStart, true);
+    yt.playVideo();
+  } catch (_) {}
 }
 
-/* ---- Open doors ---- */
+// ===== INTRO =====
 const intro = $('#intro');
-function openInvite() {
+
+function openInvite(ev) {
   if (intro.classList.contains('open')) return;
+  if (ev && ev.clientX != null) {
+    intro.style.setProperty('--ox', ev.clientX + 'px');
+    intro.style.setProperty('--oy', ev.clientY + 'px');
+  }
   intro.classList.add('open');
   document.body.classList.remove('locked');
-  musicBtn.classList.add('on');
-  wantPlay = true;
-  if (ytReady) startMusic();
-  setTimeout(() => intro.remove(), 3000);
-}
-intro.addEventListener('click', openInvite);
-intro.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openInvite(); } });
+  mb.classList.add('on');
+  want = true;
+  if (ready) play();
 
-/* ---- Pause / resume button ---- */
-musicBtn.addEventListener('click', () => {
-  if (!ytReady) return;
-  if (yt.getPlayerState() === YT.PlayerState.PLAYING) yt.pauseVideo();
-  else { yt.unMute(); yt.playVideo(); }
+  // Resume the video from the exact pause point (5s) and let it run freely
+  doorOpened = true;
+  prePaused = false;
+  vid.currentTime = CONFIG.pauseAt;
+  vid.play().catch(() => {});
+
+  setTimeout(() => intro.remove(), 3600);
+}
+
+intro.addEventListener('click', openInvite);
+intro.addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    openInvite();
+  }
+});
+
+// Music button
+mb.addEventListener('click', () => {
+  if (!ready) return;
+  yt.getPlayerState() === 1 ? yt.pauseVideo() : (yt.unMute(), yt.playVideo());
 });
 </script>
 </body>
